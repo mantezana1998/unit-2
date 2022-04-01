@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>
+      Stuff I gotta do man
+    </h1>
+    <form action="/todos" method="POST">
+    <input type="text" name ="todo">
+    <button type="submit">
+      Save To Do
+    </button>
+    </form>
+    <ul>
+      <% if(todos.length){ %>
+      <% todos.forEach(function(t) { %>
+        <li>
+          <form action="/todos/<%= t.id %>" method="POST">
+            <button type="submit">
+              Delete dis
+            </button>
+          </form>
+          <a href="/todos/<%= t.id %>"><%= t.todo %></a>
+          -
+          <%= t.todo ? 'done' : 'not done' %> 
+        </li>
+      <% }); %>
+      <% }else{ %>
+        <h1>
+          nada man
+        </h1>
+        <% } %>  
+    </ul>
+  </body>
+</html>
